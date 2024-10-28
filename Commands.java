@@ -7,6 +7,7 @@ public class Commands {
     CD cd = new CD(); // Change directory command
     Append appender = new Append(); // Append command
     PWD pwd = new PWD(); // pwd command
+    private static final ListDir  lsCommand = new ListDir() ;
     public void Help() {
         System.out.println("Available Commands:");
         System.out.println("1. pwd - Print the current working directory.");
@@ -30,11 +31,16 @@ public class Commands {
             System.out.print(CurDir + " > "); // Display the current directory
             String commandLine = scanner.nextLine().trim();
             if (commandLine.contains(">>")) {
-                String[] parts = commandLine.split(">>");
-                String filePath = parts[0].trim();
-                String content = parts[1].trim();
-
-                appender.appendToFile(filePath, content);
+                String[] parts = commandLine.split(">>", 2);
+                String command = parts[0].trim();
+                String filePath = parts[1].trim();
+                // Handle "ls" command
+                if (command.equals("ls")) {
+                    String output = lsCommand.listCurrentDirectory();
+                    appender.appendToFile(filePath, output); // Append output to the specified file
+                } else {
+                    System.out.println("Unsupported command: " + command);
+                }
             }
             else {
                 String[] parts = commandLine.split(" ");
