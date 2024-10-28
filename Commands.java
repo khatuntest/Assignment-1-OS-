@@ -7,6 +7,24 @@ public class Commands {
     CD cd = new CD(); // Change directory command
     Append appender = new Append(); // Append command
     PWD pwd = new PWD(); // pwd command
+    public void Help() {
+        System.out.println("Available Commands:");
+        System.out.println("1. pwd - Print the current working directory.");
+        System.out.println("2. cd <directory> - Change the current directory to <directory>.");
+        System.out.println("   Special Cases: Use '..' to go up one directory and '~' for home directory.");
+        System.out.println("3. ls - List files and directories in the current directory.");
+        System.out.println("4. ls -a - List all files, including hidden files.");
+        System.out.println("5. ls -r - List files and directories in reverse order.");
+        System.out.println("6. mkdir <directory> - Create a new directory with the specified name.");
+        System.out.println("7. rmdir <directory> - Remove an empty directory.");
+        System.out.println("8. touch <file> - Create a new empty file or update the timestamp of an existing file.");
+        System.out.println("9. mv <source> <destination> - Move (or rename) a file or directory from <source> to <destination>.");
+        System.out.println("10. rm <file> - Remove a file.");
+        System.out.println("11. cat <file> - Display the contents of a file.");
+        System.out.println("12. > <file> - Redirect output to a file, overwriting the file if it exists.");
+        System.out.println("13. >> <file> - Redirect output to a file, appending to the file if it exists.");
+        System.out.println("14. <command1> | <command2> - Pipe the output of <command1> as input to <command2>.");
+    }
     public void run() {
         while (true) {
             System.out.print(CurDir + " > "); // Display the current directory
