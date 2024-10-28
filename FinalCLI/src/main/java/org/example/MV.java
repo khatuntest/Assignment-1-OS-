@@ -13,7 +13,7 @@ public class MV {
 
         // Check if source file/directory exists
         if (!sourceFile.exists()) {
-            StatusReporter.ErrorMessage("Error: Source file/directory does not exist.");
+            System.out.println("Error: Source file/directory does not exist.");
             return;
         }
 
@@ -23,16 +23,16 @@ public class MV {
         } else {
             // If the destination exists and is not a directory, notify the user
             if (destinationFile.exists()) {
-                StatusReporter.ErrorMessage("Error: Destination file already exists. Operation cannot proceed.");
+                System.out.println("Error: Destination file already exists. Operation cannot proceed.");
                 return;
             }
         }
 
         // Attempt to rename/move the file/directory
         if (sourceFile.renameTo(destinationFile)) {
-            StatusReporter.SuccessMessage("File/Directory moved/renamed successfully to " + destinationFile.getAbsolutePath());
+            System.out.println("File/Directory moved/renamed successfully to " + destinationFile.getAbsolutePath());
         } else {
-            StatusReporter.ErrorMessage("Error: Failed to move/rename the file/directory. Check if the destination is valid and writable.");
+            System.out.println("Error: Failed to move/rename the file/directory. Check if the destination is valid and writable.");
         }
     }
 }
