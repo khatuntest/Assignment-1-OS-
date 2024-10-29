@@ -40,4 +40,16 @@ public class ListCommand {
             }
         }
     }
+    public ArrayList<String> hiddenList() throws Exception {
+        Path dir = Path.of(SystemProperties.currentDirectory);
+        ArrayList<String> list = new ArrayList<>();
+        DirectoryStream<Path> stream = Files.newDirectoryStream(dir);
+        for (Path file : stream) {
+            String fileName = file.getFileName().toString();
+            list.add(fileName);
+        }
+        return list;
+    }
+
+
 }
