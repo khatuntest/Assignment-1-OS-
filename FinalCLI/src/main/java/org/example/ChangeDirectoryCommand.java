@@ -27,6 +27,7 @@ public class ChangeDirectoryCommand {
         } else {
             System.out.println("Error: The system cannot find the path specified.");
         }
+        SystemProperties.currentDirectory =  currentDirection;
     }
     public String getCurrentDirection() {
         return currentDirection;
